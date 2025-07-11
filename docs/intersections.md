@@ -58,6 +58,22 @@ chr1    2       23
 
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output1
+    chr1_2-23 :0, 21
+```
+
 ---
 
 Now, we report the *part*s of the `a` interval along with the *whole* `b` interval that it overlapped:
@@ -69,6 +85,24 @@ chr1    8       12      chr1    8       12
 chr1    14      15      chr1    14      15
 chr1    20      23      chr1    20      30
 
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output2
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-23 :18, 21
 ```
 
 ---
@@ -84,6 +118,24 @@ chr1    20      23      chr1    20      23
 
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output3
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-23 :18, 21
+```
+
 ---
 
 We can also report the `inverse`, that is, parts of `a` that do not overlap `b`:
@@ -95,6 +147,24 @@ chr1    2       8
 chr1    12      14
 chr1    15      20
 
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output4
+    chr1_2-8 :0, 6
+    chr1_12-14 :10, 12
+    chr1_15-20 :13, 18
 ```
 
 ---
@@ -127,6 +197,24 @@ chr1    20      23
 
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output5
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-23 :18, 21
+```
+
 ---
 
 We can update that to require at least 3 bases:
@@ -136,6 +224,22 @@ We can update that to require at least 3 bases:
 $ bedder -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece whole --a-requirements 3 --a-mode piece
 chr1    2       23      chr1    8       12      chr1    20      30
 
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output6
+    chr1_2-23 :0, 21
 ```
 
 ---
@@ -150,6 +254,23 @@ chr1    20      23      chr1    20      30
 
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output7
+    chr1_8-12 :6, 10
+    chr1_20-23 :18, 21
+```
+
 ---
 
 If we don't specify `--a-mode piece` then it checks across the entire interval so each *part* of `a` is reported even though one of the pieces is not 3 bases:
@@ -161,6 +282,24 @@ chr1    8       12      chr1    8       12
 chr1    14      15      chr1    14      15
 chr1    20      23      chr1    20      30
 
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output8
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-23 :18, 21
 ```
 
 ---
@@ -186,6 +325,22 @@ $ bedder -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fak
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      3
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output9
+    chr1_2-23 :0, 21
+```
+
 Where the final column shows the expected value of *3*.
 
 ---
@@ -204,6 +359,22 @@ $ bedder -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fak
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      8
 ```
 
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output10
+    chr1_2-23 :0, 21
+```
+
 ---
 
 Note that if we change the `--b-piece` to `whole` we get a different value as expected:
@@ -211,6 +382,22 @@ Note that if we change the `--b-piece` to `whole` we get a different value as ex
 ```
 $ bedder -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece whole -P tests/examples/example.py -c 'py:total_b_overlap' 
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      30      15
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output11
+    chr1_2-23 :0, 21
 ```
 
 ---
@@ -222,6 +409,24 @@ $ bedder -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fak
 chr1    8       12      aaaa    chr1    8       12      4
 chr1    14      15      bbbb    chr1    14      15      1
 chr1    20      23      cccc    chr1    20      30      10
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output12
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-23 :18, 21
 ```
 
 ---
