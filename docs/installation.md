@@ -11,7 +11,7 @@ wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.2/bedder-st
 chmod +x bedder-static-linux-x86_64
 
 # Check whether install was successful
-bedder
+./bedder-static-linux-x86_64
 
 ```
 If installation is successful, running the command "bedder" should produce an error regarding lack of input arguments:
@@ -58,7 +58,7 @@ wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.2/bedder-st
 chmod +x bedder-static-macos-x86_64
 
 # Check whether install was successful
-bedder
+./bedder-static-macos-x86_64
 
 ```
 Once again, if installation is successful, running the command "bedder" should produce the following error regarding lack of input arguments:
