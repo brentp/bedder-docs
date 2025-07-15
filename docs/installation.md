@@ -1,4 +1,4 @@
-# Install bedder 
+# Installation of bedder 
 ## Binary options
 - bedder-static-linux-x86_64: Static binary for Linux x86_64 (no dependencies required)
 - bedder-static-macos-x86_64: Mostly static binary for macOS x86_64 (minimal system dependencies)
@@ -11,11 +11,25 @@ wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.2/bedder-st
 chmod +x bedder-static-linux-x86_64
 
 # Check whether install was successful
-# If successful, will recieve specific error due to lack of arguments
 bedder
 
-# Optional: 
-# May be necessary if above check fails
+```
+If installation is successful, running the command "bedder" should produce an error regarding lack of input arguments:
+```
+[<DATE> INFO  bedder] starting up
+error: the following required arguments were not provided:
+  -a <QUERY_PATH>
+  -b <OTHER_PATHS>
+  --genome <GENOME_FILE>
+```
+
+If installation is unsuccessful, consider reinstalling in a python virtual environment or relocating the binary:
+
+### Optional relocation of the linux binary
+This may be necessary if above check fails or if you are hoping to install the linus binary in a particular location distinct from the default. 
+
+```
+
 # To determine what $PATH are available: 
 echo "$PATH"
 # Move to $PATH
@@ -30,11 +44,22 @@ wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.2/bedder-st
 chmod +x bedder-static-macos-x86_64
 
 # Check whether install was successful
-# If successful, will recieve specific error due to lack of arguments
 bedder
 
-# Optional: 
-# May be necessary if above check fails
+```
+Once again, if installation is successful, running the command "bedder" should produce the following error regarding lack of input arguments:
+```
+[<DATE> INFO  bedder] starting up
+error: the following required arguments were not provided:
+  -a <QUERY_PATH>
+  -b <OTHER_PATHS>
+  --genome <GENOME_FILE>
+```
+If installation is unsuccessful, consider reinstalling in a python virtual environment or relocating the binary:
+
+### Optional relocation of the macOS binary 
+This may be necessary if above check fails or if you are hoping to install the macOS binary in a particular location distinct from the default. 
+```
 # To determine what $PATH are available: 
 echo "$PATH"
 # Move to $PATH
