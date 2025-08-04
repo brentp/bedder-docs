@@ -44,3 +44,13 @@ Options:
           When used, the default overlap requirement is set to 0, so that non-overlapping intervals can be reported.
           This can be overridden by setting a-requirements and b-requirements.
 ```
+
+## Logging
+
+`bedder` has logging for debugging and tracing. The default is to only show warnings. If interested in more granular (verbose) output, set an environment variable:
+
+```
+export RUST_LOG=info
+```
+
+sometimes this can be helpful if `bedder` isn't behaving how you expect.
