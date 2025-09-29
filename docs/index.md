@@ -2,48 +2,53 @@
 
 ## Commands
 
-For now, there is a single command: `bedder` with the following help:
+`bedder` is organized into subcommands for easier usage:
 
 ```
-Usage: bedder [OPTIONS] -a <QUERY_PATH> -b <OTHER_PATHS> --genome <GENOME_FILE>
+bedder v0.1.6
+
+Usage: bedder <COMMAND>
+
+Commands:
+  full       Full functionality with all options (almost never use this)
+  intersect  Intersection mode - hides closest options
+  closest    Closest mode - hides overlap requirements
+  help       Print this message or the help of the given subcommand(s)
 
 Options:
-  -a <QUERY_PATH>
-          input file
-  -b <OTHER_PATHS>
-          other file
-  -g, --genome <GENOME_FILE>
-          genome file for chromosome ordering
-  -c, --columns <COLUMNS>
-          columns to output (format: name:type:description:number:value_parser)
-  -o, --output <OUTPUT_PATH>
-          output file (default: stdout) [default: -]
-  -m, --a-mode <INTERSECTION_MODE>
-          intersection mode for a-file. this determines how the overlap requirements are accumulated. [default: default] [possible values: default, not, piece]
-  -M, --b-mode <B_MODE>
-          intersection mode for b-file. this determines how the overlap requirements are accumulated. [default: default] [possible values: default, not, piece]
-  -p, --a-piece <A_PIECE>
-          the piece of the a intervals to report [default: whole] [possible values: none, piece, whole, inverse]
-  -P, --b-piece <B_PIECE>
-          the piece of the b intervals to report [default: whole] [possible values: none, piece, whole, inverse]
-  -r, --a-requirements <A_REQUIREMENTS>
-          a-requirements for overlap. A float value < 1 or a number ending with % will be the fraction (or %) of the interval. An integer will be the number of bases. Default is 1 unless n-closest is set.
-  -R, --b-requirements <B_REQUIREMENTS>
-          b-requirements for overlap. A float value < 1 or a number ending with % will be the fraction (or %) of the interval. An integer will be the number of bases. Default is 1 unless n-closest is set.
-      --python <PYTHON_FILE>
-          python file with functions to be used in columns
-  -n, --n-closest <N_CLOSEST>
-          report the n-closest intervals.
-          By default, all overlapping intervals are reported.
-          If n-closest is set, then the n closest intervals are reported, regardless of overlap.
-          When used, the default overlap requirement is set to 0, so that non-overlapping intervals can be reported.
-          This is mutually exclusive with --a-requirements and --b-requirements.
-  -d, --max-distance <MAX_DISTANCE>
-          maximum distance to search for closest intervals.
-          By default, there is no distance limit.
-          When used, the default overlap requirement is set to 0, so that non-overlapping intervals can be reported.
-          This can be overridden by setting a-requirements and b-requirements.
+  -h, --help     Print help
 ```
+
+### Subcommands
+
+- **`bedder intersect`** - For finding overlaps between intervals. This is the most commonly used mode and hides closest-related options for simplicity.
+- **`bedder closest`** - For finding the nearest intervals. This mode hides overlap requirement options.
+- **`bedder full`** - Contains all options from both intersect and closest modes. Use this only when you need access to all features simultaneously.
+
+### Common Options (for all subcommands)
+
+All subcommands share common options:
+
+- `-a <QUERY_PATH>` - input file
+- `-b <OTHER_PATHS>` - other file
+- `-g, --genome <GENOME_FILE>` - genome file for chromosome ordering
+- `-c, --columns <COLUMNS>` - columns to output (format: name:type:description:number:value_parser)
+- `-o, --output <OUTPUT_PATH>` - output file (default: stdout)
+- `-p, --a-piece <A_PIECE>` - the piece of the a intervals to report [default: whole] [possible values: none, piece, whole, inverse]
+- `-P, --b-piece <B_PIECE>` - the piece of the b intervals to report [default: whole] [possible values: none, piece, whole, inverse]
+- `--python <PYTHON_FILE>` - python file with functions to be used in columns
+
+### Intersect-specific Options
+
+- `-m, --a-mode <INTERSECTION_MODE>` - intersection mode for a-file [default: default] [possible values: default, not, piece]
+- `-M, --b-mode <B_MODE>` - intersection mode for b-file [default: default] [possible values: default, not, piece]
+- `-r, --a-requirements <A_REQUIREMENTS>` - a-requirements for overlap (float < 1, percentage, or integer for bases)
+- `-R, --b-requirements <B_REQUIREMENTS>` - b-requirements for overlap (float < 1, percentage, or integer for bases)
+
+### Closest-specific Options
+
+- `-n, --n-closest <N_CLOSEST>` - report the n-closest intervals
+- `-d, --max-distance <MAX_DISTANCE>` - maximum distance to search for closest intervals
 
 ## Logging
 
