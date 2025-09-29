@@ -37,6 +37,7 @@ All subcommands share common options:
 - `-p, --a-piece <A_PIECE>` - the piece of the a intervals to report [default: whole] [possible values: none, piece, whole, inverse]
 - `-P, --b-piece <B_PIECE>` - the piece of the b intervals to report [default: whole] [possible values: none, piece, whole, inverse]
 - `--python <PYTHON_FILE>` - python file with functions to be used in columns
+- `-f, --filter <FILTER>` - optional filter expression (Python boolean expression; 'r' and 'fragment' are the current report fragment) indicates if the fragment should be included in the output
 
 ### Intersect-specific Options
 
