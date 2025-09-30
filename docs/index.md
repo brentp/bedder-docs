@@ -1,7 +1,5 @@
 # Bedder - simple, flexible intersections
 
-## Commands
-
 `bedder` is organized into subcommands for easier usage:
 
 ```

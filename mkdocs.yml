@@ -1,10 +1,12 @@
 site_name: bedder documentation
 site_url: https://brentp.github.io/bedder-docs/
+copyright: Made with ❤️ for bedder
 theme:
   # logo: assets/bedder.png
   # favicon: assets/bedder-fav.ico
   features:
     - navigation.footer
+    - navigation.expand
   icon:
     logo: material/bed
   font:
@@ -27,6 +29,9 @@ theme:
         name: Light mode
       primary: blue
       accent: deep orange
+
+extra:
+  generator: false
 
 extra_css:
   - stylesheets/extra.css
@@ -57,6 +62,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Intersections: intersections.md
-  - Closest: closest.md
+  - Subcommands:
+      - intersection: subcommands/intersection.md
+      - closest: subcommands/closest.md
   - Examples: example.md
