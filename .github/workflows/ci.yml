@@ -32,14 +32,18 @@ jobs:
       - run: pip install mkdocs-material mike
       - name: Deploy documentation
         run: |
+          # For tagged releases: deploy to version number with 'latest' alias and set as default (root redirect)
+          # For regular commits: deploy to 'dev' version
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             # Extract version from tag (e.g., v1.0.0 -> 1.0.0)
             VERSION=${GITHUB_REF#refs/tags/}
             VERSION=${VERSION#v}  # Remove 'v' prefix if present
             echo "Deploying version: $VERSION"
+            # Delete 'latest' if it exists as a version (not alias) from previous deployments
+            mike delete --push latest || true
             mike deploy --push --update-aliases $VERSION latest
+            mike set-default --push latest
           else
-            echo "Deploying to latest"
-            mike deploy --push --update-aliases latest
+            echo "Deploying to dev"
+            mike deploy --push --update-aliases dev
           fi
-          mike set-default --push latest
