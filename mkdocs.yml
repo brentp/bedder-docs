@@ -54,3 +54,9 @@ markdown_extensions:
       alternate_style: true
   - admonition
   - pymdownx.details
+
+nav:
+  - Home: index.md
+  - Intersections: intersections.md
+  - Closest: closest.md
+  - Examples: example.md
