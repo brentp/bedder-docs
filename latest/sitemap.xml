@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://brentp.github.io/bedder-docs/latest/</loc>
-         <lastmod>2025-09-29</lastmod>
+         <lastmod>2025-09-30</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/latest/closest/</loc>
+         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/latest/content-tabs/</loc>
-         <lastmod>2025-09-29</lastmod>
+         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/latest/example/</loc>
-         <lastmod>2025-09-29</lastmod>
+         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/latest/installation/</loc>
-         <lastmod>2025-09-29</lastmod>
+         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/latest/intersections/</loc>
-         <lastmod>2025-09-29</lastmod>
+         <lastmod>2025-09-30</lastmod>
     </url>
 </urlset>
