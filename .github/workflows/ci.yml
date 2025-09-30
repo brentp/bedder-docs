@@ -38,8 +38,8 @@ jobs:
             VERSION=${VERSION#v}  # Remove 'v' prefix if present
             echo "Deploying version: $VERSION"
             mike deploy --push --update-aliases $VERSION latest
-            mike set-default --push latest
           else
             echo "Deploying to latest"
             mike deploy --push --update-aliases latest
           fi
+          mike set-default --push latest
