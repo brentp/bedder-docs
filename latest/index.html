@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="intersections/">
+        <link rel="next" href="subcommands/intersection/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -282,16 +282,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#subcommands" class="md-nav__link">
     <span class="md-ellipsis">
       Subcommands
@@ -299,8 +289,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#common-options-for-all-subcommands" class="md-nav__link">
     <span class="md-ellipsis">
       Common Options (for all subcommands)
@@ -308,8 +298,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#intersect-specific-options" class="md-nav__link">
     <span class="md-ellipsis">
       Intersect-specific Options
@@ -317,18 +307,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#closest-specific-options" class="md-nav__link">
     <span class="md-ellipsis">
       Closest-specific Options
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -355,13 +340,53 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Subcommands
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Subcommands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="intersections/" class="md-nav__link">
+      <a href="subcommands/intersection/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Intersections
+    intersection
     
   </span>
   
@@ -370,25 +395,34 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="closest/" class="md-nav__link">
+      <a href="subcommands/closest/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Closest
+    closest
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -442,16 +476,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#subcommands" class="md-nav__link">
     <span class="md-ellipsis">
       Subcommands
@@ -459,8 +483,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#common-options-for-all-subcommands" class="md-nav__link">
     <span class="md-ellipsis">
       Common Options (for all subcommands)
@@ -468,8 +492,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#intersect-specific-options" class="md-nav__link">
     <span class="md-ellipsis">
       Intersect-specific Options
@@ -477,18 +501,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#closest-specific-options" class="md-nav__link">
     <span class="md-ellipsis">
       Closest-specific Options
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -518,7 +537,6 @@
 
 
 <h1 id="bedder-simple-flexible-intersections">Bedder - simple, flexible intersections</h1>
-<h2 id="commands">Commands</h2>
 <p><code>bedder</code> is organized into subcommands for easier usage:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bedder v0.1.6
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -599,13 +617,13 @@
         
         
           
-          <a href="intersections/" class="md-footer__link md-footer__link--next" aria-label="Next: Intersections">
+          <a href="subcommands/intersection/" class="md-footer__link md-footer__link--next" aria-label="Next: intersection">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Intersections
+                intersection
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -641,7 +659,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "navigation.expand"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>

@@ -5,10 +5,6 @@
          <lastmod>2025-09-30</lastmod>
     </url>
     <url>
-         <loc>https://brentp.github.io/bedder-docs/latest/closest/</loc>
-         <lastmod>2025-09-30</lastmod>
-    </url>
-    <url>
          <loc>https://brentp.github.io/bedder-docs/latest/content-tabs/</loc>
          <lastmod>2025-09-30</lastmod>
     </url>
@@ -21,7 +17,11 @@
          <lastmod>2025-09-30</lastmod>
     </url>
     <url>
-         <loc>https://brentp.github.io/bedder-docs/latest/intersections/</loc>
+         <loc>https://brentp.github.io/bedder-docs/latest/subcommands/closest/</loc>
+         <lastmod>2025-09-30</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/latest/subcommands/intersection/</loc>
          <lastmod>2025-09-30</lastmod>
     </url>
 </urlset>
