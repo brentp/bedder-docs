@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/content-tabs/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/example/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/installation/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/dev/python-api/</loc>
+         <lastmod>2025-11-16</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/subcommands/closest/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
     </url>
     <url>
          <loc>https://brentp.github.io/bedder-docs/dev/subcommands/intersection/</loc>
-         <lastmod>2025-10-28</lastmod>
+         <lastmod>2025-11-16</lastmod>
     </url>
 </urlset>
