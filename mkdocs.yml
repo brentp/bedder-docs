@@ -65,4 +65,6 @@ nav:
   - Subcommands:
       - intersection: subcommands/intersection.md
       - closest: subcommands/closest.md
-  - Examples: example.md
+  - Installation: installation.md
+  - Python API: python-api.md
+  #- Examples: example.md

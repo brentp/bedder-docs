@@ -1,9 +1,8 @@
 # Installation of bedder
 
-## Binary options
+Bedder is build with [rust](https://www.rust-lang.org/tools/install) but it embeds a python interpreter. The binary is self-contained, but it does require python packages to be available.
 
-- bedder-static-linux-x86_64: Static binary for Linux x86_64
-- bedder-static-macos-x86_64: Mostly static binary for macOS x86_64
+It is recommended to use [uv](https://docs.astral.sh/uv/getting-started/installation/) venv to do so. See below for more details.
 
 ## Linux Installation
 
@@ -17,7 +16,7 @@ chmod +x bedder-static-linux-x86_64
 
 ```
 
-If installation is successful, running the command "bedder" should display the subcommand help:
+If installation is successful it will show the following output:
 
 ```
 bedder v0.1.6
@@ -34,11 +33,9 @@ Options:
   -h, --help     Print help
 ```
 
-### Linux troubleshoot
+### Linux Installation Details
 
-If installation is unsuccessful, consider:
-
-#### Reinstalling in a python virtual environment
+Create a python virtual environment and install bedder
 
 ```
 python -m venv venv
@@ -46,86 +43,3 @@ source venv/bin/activate
 wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.6/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 ```
-
-#### Calling the command from the current directory
-
-```
-./bedder-static-linux-x86_64
-```
-
-#### Relocating the binary to $PATH
-
-This may be necessary if above check fails or if you are hoping to install the linux binary in a particular location distinct from the default.
-
-```
-
-# To determine what $PATH are available: 
-echo "$PATH"
-# Move to $PATH
-sudo mv bedder-static-linux-x86_64 /usr/local/bin/bedder
-
-```
-
-## macOS Installation
-
-```
-# Download Mac binary and make executable
-wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.6/bedder-static-macos-x86_64
-chmod +x bedder-static-macos-x86_64
-
-# Check whether install was successful
-./bedder-static-macos-x86_64
-
-```
-
-Once again, if installation is successful, running the command "bedder" should display the subcommand help.
-
-```
-
-### macOS troubleshoot
-
-If installation is unsuccessful, consider:
-
-#### Reinstalling in a python virtual environment
-
-```
-
-python -m venv venv
-source venv/bin/activate
-wget <https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.6/bedder-static-macos-x86_64>
-chmod +x bedder-static-macos-x86_64
-
-```
-
-#### Calling the command from the current directory
-
-```
-
-./bedder-static-macos-x86_64
-
-```
-
-#### Relocating the binary to $PATH
-
-This may be necessary if above check fails or if you are hoping to install the macOS binary in a particular location distinct from the default.
-
-```
-
-# To determine what $PATH are available
-
-echo "$PATH"
-
-# Move to $PATH
-
-sudo mv bedder-static-macos-x86_64 /usr/local/bin/bedder
-
-```
-
-## Binary Information
-
-- Linux binary: Fully static (~6MB, no dependencies)
-  - fully static when installing on a local machine
-  - testing has identified that as of June 2025, installation on a remote cluster may require the use of a python venv
-- macOS binary: Mostly static (~6MB, minimal system dependencies)
-- Python: Works with any Python 3.8+ system
-- Architecture: x86_64
