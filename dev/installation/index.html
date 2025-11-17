@@ -594,8 +594,11 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  -h, --help     Print help
 </span></code></pre></div>
 <h3 id="linux-installation-details">Linux Installation Details</h3>
+<blockquote>
+<p><strong>⚠️ Important:</strong> Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.</p>
+</blockquote>
 <p>Create a python virtual environment and install bedder</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python -m venv venv
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv venv --python 3.13
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>source venv/bin/activate
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.7/bedder-static-linux-x86_64
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>chmod +x bedder-static-linux-x86_64
@@ -611,7 +614,7 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  &lt;no Python frame&gt;
 </span></code></pre></div>
 <p>This means it can't find your python libraries. You can activate a uv (or pip) venv or set PYTHONPATH, e.g.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PYTHONPATH=~/miniforge3/lib/python3.10/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PYTHONPATH=~/miniforge3/lib/python3.13/
 </span></code></pre></div>
 
 
