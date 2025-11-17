@@ -46,6 +46,6 @@ jobs:
             mike set-default --push latest
           else
             echo "Deploying to dev"
-            mike delete --push latest || true # allows force-pushing
+            mike delete --push dev || true # allows force-pushing
             mike deploy --push --update-aliases dev
           fi
