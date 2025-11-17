@@ -41,7 +41,7 @@ jobs:
             VERSION=${VERSION#v}  # Remove 'v' prefix if present
             echo "Deploying version: $VERSION"
             # Delete 'latest' if it exists as a version (not alias) from previous deployments
-            mike delete --push latest || true
+            mike delete --push latest $VERSION || true
             mike deploy --push --update-aliases $VERSION latest
             mike set-default --push latest
           else

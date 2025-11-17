@@ -43,3 +43,22 @@ source venv/bin/activate
 wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.7/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 ```
+
+If you see:
+
+```
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Fatal Python error: Failed to import encodings module
+Python runtime state: core initialized
+ModuleNotFoundError: No module named 'encodings'
+
+Current thread 0x0000000040a43540 (most recent call first):
+  <no Python frame>
+```
+
+This means it can't find your python libraries. You can activate a uv (or pip) venv or set PYTHONPATH, e.g.
+
+```
+PYTHONPATH=~/miniforge3/lib/python3.10/
+```
