@@ -594,9 +594,7 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  -h, --help     Print help
 </span></code></pre></div>
 <h3 id="linux-installation-details">Linux Installation Details</h3>
-<blockquote>
 <p><strong>⚠️ Important:</strong> Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.</p>
-</blockquote>
 <p>Create a python virtual environment and install bedder</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv venv --python 3.13
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>source venv/bin/activate
@@ -616,6 +614,12 @@
 <p>This means it can't find your python libraries. You can activate a uv (or pip) venv or set PYTHONPATH, e.g.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PYTHONPATH=~/miniforge3/lib/python3.13/
 </span></code></pre></div>
+<p>or with uv:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>curl -LsSf https://astral.sh/uv/install.sh | sh
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>uv python install 3.13
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>uv venv
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>source .venv/bin/activate
+</span></code></pre></div></p>
 
 
 
