@@ -35,10 +35,12 @@ Options:
 
 ### Linux Installation Details
 
+> **⚠️ Important:** Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.
+
 Create a python virtual environment and install bedder
 
 ```
-python -m venv venv
+uv venv --python 3.13
 source venv/bin/activate
 wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.7/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
@@ -60,5 +62,5 @@ Current thread 0x0000000040a43540 (most recent call first):
 This means it can't find your python libraries. You can activate a uv (or pip) venv or set PYTHONPATH, e.g.
 
 ```
-PYTHONPATH=~/miniforge3/lib/python3.10/
+PYTHONPATH=~/miniforge3/lib/python3.13/
 ```
