@@ -35,7 +35,7 @@ Options:
 
 ### Linux Installation Details
 
-> **⚠️ Important:** Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.
+**⚠️ Important:** Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.
 
 Create a python virtual environment and install bedder
 
@@ -63,4 +63,12 @@ This means it can't find your python libraries. You can activate a uv (or pip) v
 
 ```
 PYTHONPATH=~/miniforge3/lib/python3.13/
+```
+
+or with uv:
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install 3.13
+uv venv
+source .venv/bin/activate
 ```
