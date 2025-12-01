@@ -8,7 +8,7 @@ It is recommended to use [uv](https://docs.astral.sh/uv/getting-started/installa
 
 ```
 # Download Linux binary and make it executable
-wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.7/bedder-static-linux-x86_64
+wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.8/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 
 # Check whether install was successful
@@ -19,7 +19,7 @@ chmod +x bedder-static-linux-x86_64
 If installation is successful it will show the following output:
 
 ```
-bedder v0.1.7
+bedder v0.1.8
 
 Usage: bedder <COMMAND>
 
@@ -35,14 +35,14 @@ Options:
 
 ### Linux Installation Details
 
-**⚠️ Important:** Bedder requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.
+**⚠️ Important:** Bedder on linux requires Python 3.13 specifically. Please ensure you're using this version when creating the virtual environment.
 
 Create a python virtual environment and install bedder
 
 ```
 uv venv --python 3.13
 source venv/bin/activate
-wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.7/bedder-static-linux-x86_64
+wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.8/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 ```
 
@@ -66,6 +66,7 @@ PYTHONPATH=~/miniforge3/lib/python3.13/
 ```
 
 or with uv:
+
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv python install 3.13
