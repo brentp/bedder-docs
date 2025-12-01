@@ -32,6 +32,8 @@ jobs:
             mkdocs-material-
 
       - run: pip install mkdocs-material mike
+      - name: Fetch gh-pages branch
+        run: git fetch origin gh-pages --depth=1
       - name: Deploy documentation
         run: |
           # For tagged releases: deploy to version number with 'latest' alias and set as default (root redirect)
