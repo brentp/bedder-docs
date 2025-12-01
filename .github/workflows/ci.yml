@@ -44,11 +44,13 @@ jobs:
             VERSION=${VERSION#v}  # Remove 'v' prefix if present
             echo "Deploying version: $VERSION"
             # Delete 'latest' if it exists as a version (not alias) from previous deployments
-            mike delete --push latest $VERSION || true
-            mike deploy --push --update-aliases $VERSION latest
-            mike set-default --push latest
+            mike delete latest $VERSION || true
+            mike deploy --update-aliases $VERSION latest
+            mike set-default latest
           else
             echo "Deploying to dev"
-            mike delete --push dev || true # allows force-pushing
-            mike deploy --push --update-aliases dev
+            mike delete dev || true # allows force-pushing
+            mike deploy --update-aliases dev
           fi
+          # Single push at the end to avoid conflicts between multiple pushes
+          git push origin gh-pages --force
