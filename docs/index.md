@@ -3,7 +3,7 @@
 `bedder` is organized into subcommands for easier usage:
 
 ```
-bedder v0.1.8
+bedder v0.1.9
 
 Usage: bedder <COMMAND>
 

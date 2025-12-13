@@ -8,7 +8,7 @@ It is recommended to use [uv](https://docs.astral.sh/uv/getting-started/installa
 
 ```
 # Download Linux binary and make it executable
-wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.8/bedder-static-linux-x86_64
+wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.9/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 
 # Check whether install was successful
@@ -19,7 +19,7 @@ chmod +x bedder-static-linux-x86_64
 If installation is successful it will show the following output:
 
 ```
-bedder v0.1.8
+bedder v0.1.9
 
 Usage: bedder <COMMAND>
 
@@ -42,7 +42,7 @@ Create a python virtual environment and install bedder
 ```
 uv venv --python 3.13
 source venv/bin/activate
-wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.8/bedder-static-linux-x86_64
+wget https://github.com/quinlan-lab/bedder-rs/releases/download/v0.1.9/bedder-static-linux-x86_64
 chmod +x bedder-static-linux-x86_64
 ```
 
