@@ -32,8 +32,8 @@ All subcommands share common options:
 - `-g, --genome <GENOME_FILE>` - genome file for chromosome ordering
 - `-c, --columns <COLUMNS>` - columns to output (format: name:type:description:number:value_parser)
 - `-o, --output <OUTPUT_PATH>` - output file (default: stdout)
-- `-p, --a-piece <A_PIECE>` - the piece of the a intervals to report [default: whole] [possible values: none, piece, whole, inverse]
-- `-P, --b-piece <B_PIECE>` - the piece of the b intervals to report [default: whole] [possible values: none, piece, whole, inverse]
+- `-p, --a-piece <A_PIECE>` - the piece of the a intervals to report [default: whole] [possible values: none, piece, whole, inverse, whole-wide]
+- `-P, --b-piece <B_PIECE>` - the piece of the b intervals to report [default: whole] [possible values: none, piece, whole, inverse, whole-wide]
 - `--python <PYTHON_FILE>` - python file with functions to be used in columns
 - `-f, --filter <FILTER>` - optional filter expression (Python boolean expression; 'r' and 'fragment' are the current report fragment) indicates if the fragment should be included in the output
 

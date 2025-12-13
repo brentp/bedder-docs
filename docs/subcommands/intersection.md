@@ -1,4 +1,3 @@
-
 <div class="fixed-bed-files">
   <div class="file-section">
     <h4>aa.bed</h4>
@@ -41,19 +40,19 @@ For, now, we focus on which part of each interval that is reported. The options 
 ```
 
   -p, --a-piece <A_PIECE>
-          a-piece [default: whole] [possible values: none, part, whole, inverse]
+          a-piece [default: whole] [possible values: none, piece, whole, inverse, whole-wide]
       --b-piece <B_PIECE>
-          b-piece [default: whole] [possible values: none, part, whole, inverse]
+          b-piece [default: whole] [possible values: none, piece, whole, inverse, whole-wide]
 
 ```
 
 ---
 
-Let's start with reporting the *whole* `a` interval if it overlaps and *none* of the `b` interval:
+Let's start with reporting a single line for the `a` interval if it overlaps using `whole-wide` and _none_ of the `b` interval:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece none
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole-wide --b-piece none
 chr1    2       23
 
 ```
@@ -76,11 +75,74 @@ gantt
 
 ---
 
-Now, we report the *part*s of the `a` interval along with the *whole* `b` interval that it overlapped:
+Using `--a-piece whole` instead reports one line per overlap (the `a` interval is repeated for each `b` it overlaps):
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece whole
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece none
+chr1    2       23
+chr1    2       23
+chr1    2       23
+
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output1b
+    chr1_2-23 :0, 21
+    chr1_2-23 :0, 21
+    chr1_2-23 :0, 21
+```
+
+---
+
+We can also use `--a-piece whole` with `--b-piece whole` to see which `b` intervals each `a` overlaps:
+
+```
+
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece whole
+chr1    2       23      chr1    8       12
+chr1    2       23      chr1    14      15
+chr1    2       23      chr1    20      30
+
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output1c
+    chr1_2-23 :0, 21
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+```
+
+---
+
+Now, we report the *piece*s of the `a` interval along with the _whole_ `b` interval that it overlapped:
+
+```
+
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece whole
 chr1    8       12      chr1    8       12
 chr1    14      15      chr1    14      15
 chr1    20      23      chr1    20      30
@@ -107,11 +169,11 @@ gantt
 
 ---
 
-And now the *part* of `a` and the `part` of `b`:
+And now the _piece_ of `a` and the `piece` of `b`:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece part
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece piece
 chr1    8       12      chr1    8       12
 chr1    14      15      chr1    14      15
 chr1    20      23      chr1    20      23
@@ -190,7 +252,7 @@ Here is the default, requiring a single base of overlap:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece none --a-requirements 1
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece none --a-requirements 1
 chr1    8       12
 chr1    14      15
 chr1    20      23
@@ -221,7 +283,7 @@ We can update that to require at least 3 bases:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece whole --a-requirements 3 --a-mode piece
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole-wide --b-piece whole-wide --a-requirements 3 --a-mode piece
 chr1    2       23      chr1    8       12      chr1    20      30
 
 ```
@@ -248,7 +310,7 @@ We can also report each a piece:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece whole --b-requirements 3 --a-mode piece`
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece whole --b-requirements 3 --a-mode piece
 chr1    8       12      chr1    8       12
 chr1    20      23      chr1    20      30
 
@@ -273,11 +335,11 @@ gantt
 
 ---
 
-If we don't specify `--a-mode piece` then it checks across the entire interval so each *part* of `a` is reported even though one of the pieces is not 3 bases:
+If we don't specify `--a-mode piece` then it checks across the entire interval so each _piece_ of `a` is reported even though one of the pieces is not 3 bases:
 
 ```
 
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece whole --b-requirements 3`
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece whole --b-requirements 3
 chr1    8       12      chr1    8       12
 chr1    14      15      chr1    14      15
 chr1    20      23      chr1    20      30
@@ -321,7 +383,7 @@ This tells `bedder` that the return type will be an integer. And the user will r
 We put this in a file called `example.py` and then run with an argument of `-c py:n_overlapping` as:
 
 ```
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece part -P tests/examples/example.py -c 'py:n_overlapping'
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole-wide --b-piece piece --python tests/examples/example.py -c 'py:n_overlapping'
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      3
 ```
 
@@ -341,7 +403,7 @@ gantt
     chr1_2-23 :0, 21
 ```
 
-Where the final column shows the expected value of *3*.
+Where the final column shows the expected value of _3_.
 
 ---
 
@@ -355,7 +417,7 @@ def bedder_total_b_overlap(fragment) -> int:
 And call as:
 
 ```
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece part -P tests/examples/example.py -c 'py:total_b_overlap' 
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole-wide --b-piece piece --python tests/examples/example.py -c 'py:total_b_overlap'
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      8
 ```
 
@@ -377,10 +439,10 @@ gantt
 
 ---
 
-Note that if we change the `--b-piece` to `whole` we get a different value as expected:
+Note that if we change the `--b-piece` to `whole-wide` we get a different value as expected:
 
 ```
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole --b-piece whole -P tests/examples/example.py -c 'py:total_b_overlap' 
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece whole-wide --b-piece whole-wide --python tests/examples/example.py -c 'py:total_b_overlap'
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      30      15
 ```
 
@@ -402,13 +464,13 @@ gantt
 
 ---
 
-and likewise if we change `--a-piece` to part:
+and likewise if we change `--a-piece` to piece:
 
 ```
-$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece part --b-piece whole -P tests/examples/example.py -c 'py:total_b_overlap'
-chr1    8       12      aaaa    chr1    8       12      4
-chr1    14      15      bbbb    chr1    14      15      1
-chr1    20      23      cccc    chr1    20      30      10
+$ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/examples/fake.fai --a-piece piece --b-piece whole --python tests/examples/example.py -c 'py:total_b_overlap'
+chr1    8       12      chr1    8       12      4
+chr1    14      15      chr1    14      15      1
+chr1    20      23      chr1    20      30      10
 ```
 
 ```mermaid

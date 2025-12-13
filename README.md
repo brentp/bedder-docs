@@ -14,3 +14,17 @@ mkdocs serve
 Then edit/add files in `docs/*.md`
 
 After viewing changes locally, open a PR to github.com/brentp/bedder-docs and the continuous integration via github actions will build and update the docs at <https://brentp.github.io/bedder-docs/>
+
+## Testing Documentation Examples
+
+The examples in `docs/subcommands/intersection.md` can be tested to ensure they produce the expected output:
+
+```bash
+# Place the latest bedder binary in the repo root
+cp /path/to/bedder ./bedder
+
+# Run the test script
+python scripts/test_intersection_examples.py
+```
+
+The script extracts all command examples from the markdown file, runs them against `./bedder`, and verifies the output matches the documented expected output. Make sure `./bedder` is the latest bedder binary before running the tests.
