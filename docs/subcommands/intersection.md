@@ -261,7 +261,11 @@ gantt
     chr1_8-12 :6, 10
     chr1_14-15 :12, 13
     chr1_20-30 :18, 28
-    section output-subtract
+    section bedtools_output
+    chr1_2-8 :0, 6
+    chr1_12-14 :10, 12
+    chr1_15-20 :13, 18
+    section bedder_output
     chr1_2-8 :0, 6
     chr1_12-14 :10, 12
     chr1_15-20 :13, 18
