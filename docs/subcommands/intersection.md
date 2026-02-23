@@ -229,6 +229,44 @@ gantt
     chr1_15-20 :13, 18
 ```
 
+### Replicating `bedtools subtract`
+
+To reproduce:
+
+```
+$ bedtools subtract -a aa.bed -b bb.bed
+chr1    2       8
+chr1    12      14
+chr1    15      20
+```
+
+Use `bedder` with `--a-piece inverse --b-piece none`:
+
+```
+$ bedder intersect -a aa.bed -b bb.bed -g fake.fai --a-piece inverse --b-piece none
+chr1    2       8
+chr1    12      14
+chr1    15      20
+```
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
+gantt
+    dateFormat X
+    axisFormat %s
+
+    section aa
+    chr1_2-23 :0, 21
+    section bb
+    chr1_8-12 :6, 10
+    chr1_14-15 :12, 13
+    chr1_20-30 :18, 28
+    section output-subtract
+    chr1_2-8 :0, 6
+    chr1_12-14 :10, 12
+    chr1_15-20 :13, 18
+```
+
 ---
 
 There are other many combinations of parameters, some of which are not very helpful!
