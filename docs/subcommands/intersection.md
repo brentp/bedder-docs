@@ -57,21 +57,7 @@ chr1    2       23
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output1
-    chr1_2-23 :0, 21
-```
+![output1 interval diagram](../images/intersection/output1.svg)
 
 ---
 
@@ -86,23 +72,7 @@ chr1    2       23
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output1b
-    chr1_2-23 :0, 21
-    chr1_2-23 :0, 21
-    chr1_2-23 :0, 21
-```
+![output1b interval diagram](../images/intersection/output1b.svg)
 
 ---
 
@@ -117,24 +87,7 @@ chr1    2       23      chr1    20      30
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output1c
-    chr1_2-23 :0, 21
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-```
+![output1c interval diagram](../images/intersection/output1c.svg)
 
 ---
 
@@ -149,23 +102,7 @@ chr1    20      23      chr1    20      30
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output2
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-23 :18, 21
-```
+![output2 interval diagram](../images/intersection/output2.svg)
 
 ---
 
@@ -180,23 +117,7 @@ chr1    20      23      chr1    20      23
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output3
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-23 :18, 21
-```
+![output3 interval diagram](../images/intersection/output3.svg)
 
 ---
 
@@ -211,23 +132,9 @@ chr1    15      20
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
+![inverse intersection output](../images/intersection/inverse.svg)
 
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output4
-    chr1_2-8 :0, 6
-    chr1_12-14 :10, 12
-    chr1_15-20 :13, 18
-```
+_Figure generated with `scripts/render_interval_diagrams.py`._
 
 ### Replicating `bedtools subtract`
 
@@ -249,27 +156,7 @@ chr1    12      14
 chr1    15      20
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section bedtools_output
-    chr1_2-8 :0, 6
-    chr1_12-14 :10, 12
-    chr1_15-20 :13, 18
-    section bedder_output
-    chr1_2-8 :0, 6
-    chr1_12-14 :10, 12
-    chr1_15-20 :13, 18
-```
+![bedtools subtract and bedder equivalent output](../images/intersection/subtract-equivalence.svg)
 
 ---
 
@@ -301,23 +188,7 @@ chr1    20      23
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output5
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-23 :18, 21
-```
+![output5 interval diagram](../images/intersection/output5.svg)
 
 ---
 
@@ -330,21 +201,7 @@ chr1    2       23      chr1    8       12      chr1    20      30
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output6
-    chr1_2-23 :0, 21
-```
+![output6 interval diagram](../images/intersection/output6.svg)
 
 ---
 
@@ -358,22 +215,7 @@ chr1    20      23      chr1    20      30
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output7
-    chr1_8-12 :6, 10
-    chr1_20-23 :18, 21
-```
+![output7 interval diagram](../images/intersection/output7.svg)
 
 ---
 
@@ -388,23 +230,7 @@ chr1    20      23      chr1    20      30
 
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output8
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-23 :18, 21
-```
+![output8 interval diagram](../images/intersection/output8.svg)
 
 ---
 
@@ -429,21 +255,7 @@ $ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/ex
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      3
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output9
-    chr1_2-23 :0, 21
-```
+![output9 interval diagram](../images/intersection/output9.svg)
 
 Where the final column shows the expected value of _3_.
 
@@ -463,21 +275,7 @@ $ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/ex
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      23      8
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output10
-    chr1_2-23 :0, 21
-```
+![output10 interval diagram](../images/intersection/output10.svg)
 
 ---
 
@@ -488,21 +286,7 @@ $ bedder intersect -a tests/examples/aa.bed -b tests/examples/bb.bed -g tests/ex
 chr1    2       23      chr1    8       12      chr1    14      15      chr1    20      30      15
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output11
-    chr1_2-23 :0, 21
-```
+![output11 interval diagram](../images/intersection/output11.svg)
 
 ---
 
@@ -515,23 +299,7 @@ chr1    14      15      chr1    14      15      1
 chr1    20      23      chr1    20      30      10
 ```
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryTextColor': '#ffffff', 'tertiaryTextColor': '#ffffff', 'sectionBkgColor': '#ffffff', 'altSectionBkgColor': '#ffffff', 'gridColor': '#777777', 'section0': '#ffffff', 'section1': '#ffffff', 'section2': '#ffffff', 'section3': '#ffffff', 'taskTextColor': '#ffffff', 'altTaskTextColor': '#ffffff', 'textColor': '#ffffff'}}}%%
-gantt
-    dateFormat X
-    axisFormat %s
-
-    section aa
-    chr1_2-23 :0, 21
-    section bb
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-30 :18, 28
-    section output12
-    chr1_8-12 :6, 10
-    chr1_14-15 :12, 13
-    chr1_20-23 :18, 21
-```
+![output12 interval diagram](../images/intersection/output12.svg)
 
 ---
 
