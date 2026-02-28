@@ -11,6 +11,7 @@ Commands:
   full       Full functionality with all options (almost never use this)
   intersect  Intersection mode - hides closest options
   closest    Closest mode - hides overlap requirements
+  map        Map operation — aggregate overlapping B values per A interval
   help       Print this message or the help of the given subcommand(s)
 
 Options:
@@ -21,6 +22,7 @@ Options:
 
 - **`bedder intersect`** - For finding overlaps between intervals. This is the most commonly used mode and hides closest-related options for simplicity.
 - **`bedder closest`** - For finding the nearest intervals. This mode hides overlap requirement options.
+- **`bedder map`** - For aggregating values from overlapping `-b` intervals for each `-a` interval.
 - **`bedder full`** - Contains all options from both intersect and closest modes. Use this only when you need access to all features simultaneously.
 
 ### Common Options (for all subcommands)

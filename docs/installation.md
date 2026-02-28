@@ -27,6 +27,7 @@ Commands:
   full       Full functionality with all options (almost never use this)
   intersect  Intersection mode - hides closest options
   closest    Closest mode - hides overlap requirements
+  map        Map operation — aggregate overlapping B values per A interval
   help       Print this message or the help of the given subcommand(s)
 
 Options:
