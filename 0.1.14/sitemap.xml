@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/content-tabs/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/example/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/installation/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/python-api/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/subcommands/closest/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/subcommands/intersection/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://brentp.github.io/bedder-docs/0.1.14/subcommands/map/</loc>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+</urlset>
