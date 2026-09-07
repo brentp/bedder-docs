@@ -39,6 +39,9 @@ extra_css:
 extra_javascript:
   - javascripts/extra.js
 
+hooks:
+  - scripts/publish_skill.py
+
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:

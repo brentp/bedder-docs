@@ -1,0 +1,176 @@
+# Use Bedder from an agent
+
+Use `bedder` for genomic interval intersections, subtraction, nearest neighbors,
+aggregation, and Python-derived output columns.
+
+## Workflow
+
+1. Locate Bedder and inspect the installed interface:
+
+   ```bash
+   command -v bedder || test -x ./bedder
+   bedder --version
+   bedder --help
+   bedder intersect --help
+   ```
+
+   Use `./bedder` for a repository-local binary. Check the selected subcommand's
+   help because releases differ; in particular, older versions may lack `map`.
+
+2. Inspect the input formats, headers, contigs, and sort order. Supply `-a` as the
+   query, `-b` as the target, and `-g` as a FASTA index (`.fai`) defining contig
+   order. Keep intervals sorted by that order and position.
+
+3. Choose a focused subcommand:
+
+   - `intersect`: overlaps, subtraction, and overlap-derived columns.
+   - `closest`: nearest intervals; use `-n`, `-d`, and `-c distance`.
+   - `map`: aggregate B values per A, only when listed by `bedder --help`.
+   - `full`: combine options hidden by focused subcommands; rarely needed.
+
+4. Make reporting semantics explicit. Test the exact command on a tiny fixture
+   containing relevant hits, misses, boundaries, and missing values before scaling.
+
+## Intersections
+
+```bash
+bedder intersect \
+  -a query.bed -b target.bed -g reference.fa.fai \
+  --a-piece whole --b-piece whole \
+  -o result.bed
+```
+
+Choose the reported pieces deliberately:
+
+- `whole`: full interval in long form, normally one row per overlap.
+- `whole-wide`: full interval once, with hits on the same wide row.
+- `piece`: only the overlapping portion.
+- `inverse`: portions not covered by the other interval.
+- `none`: omit that side where supported; current releases require A.
+
+Subtract B from A with:
+
+```bash
+bedder intersect -a a.bed -b b.bed -g reference.fa.fai \
+  --a-piece inverse --b-piece none
+```
+
+Set overlap requirements as bases (`3`), fractions (`0.5`), or percentages
+(`50%`) using `--a-requirements` and `--b-requirements`. `--a-mode piece` or
+`--b-mode piece` makes an individual overlap satisfy the threshold instead of
+using accumulated coverage. Confirm details in live help.
+
+BED and callback coordinates are 0-based, half-open. Bedder handles VCF coordinate
+conversion. Useful built-in column selectors include `count`, `bases`, and
+`distance`, depending on subcommand and release.
+
+## Closest
+
+```bash
+bedder closest \
+  -a query.bed -b target.bed -g reference.fa.fai \
+  --n-closest 1 --max-distance 10000 -c distance
+```
+
+Distance is zero for overlaps. Do not combine closest options with overlap
+requirements when live help disallows it. Verify no-hit output rather than assuming
+its shape.
+
+## Python callbacks
+
+Pass callback code with `--python callbacks.py` and select a function with
+`-c 'py:name'`.
+
+Follow these rules:
+
+- Name callbacks `bedder_<name>` but reference them as `py:<name>`.
+- Annotate returns with the concrete built-ins `int`, `float`, `str`, or `bool` and
+  return exactly that type on every path.
+- Do not use `from __future__ import annotations`; Bedder introspects annotation
+  objects. Do not prefix helper functions with `bedder_` because every such
+  function is discovered and validated.
+- Do not import `bedder` at module load time. The CLI executes the file in its
+  embedded interpreter and passes Bedder objects into callbacks.
+- Add a concise docstring; Bedder may use its first non-empty line as an output
+  field description.
+
+An `intersect` or `closest` output callback accepts one report fragment:
+
+```python
+def bedder_overlap_count(fragment) -> int:
+    """Number of reported B intervals."""
+    return len(fragment.b)
+
+
+def bedder_total_b_bases(fragment) -> int:
+    """Total length of the reported B pieces."""
+    return sum(iv.stop - iv.start for iv in fragment.b)
+```
+
+```bash
+bedder intersect -a a.bed -b b.bed -g reference.fa.fai \
+  --a-piece whole-wide --b-piece piece \
+  --python callbacks.py \
+  -c 'py:overlap_count' -c 'py:total_b_bases'
+```
+
+Reporting options affect callback input: `--b-piece whole` supplies full B records,
+while `--b-piece piece` supplies clipped overlap pieces.
+
+### Callback objects
+
+- `fragment.a`: A/query `Position`, or `None` if omitted.
+- `fragment.b`: reported B `Position` list; iterating `fragment` also iterates B.
+- `fragment.id`: fragment identifier.
+- `Position`: `chrom`, `start`, `stop`, `bed()`, and `vcf()`.
+- BED record: `chrom`, `start`, `stop`, optional `name`, optional `score`,
+  `other_fields()`, and extra-field indexing.
+- VCF/BCF record: `chrom`, zero-based `pos`, `info("TAG")`, `format("TAG")`,
+  `qual`, `REF`, `ALT`, `filters`, `id`, and supported setters.
+
+Call only the format-appropriate accessor; the wrong `.bed()` or `.vcf()` may raise
+`TypeError`. VCF INFO values may be `None`, a scalar, or a list according to the
+header. Handle those shapes and cast the final result to the annotated built-in
+type.
+
+Filter report fragments with a quoted expression; `fragment` and `r` both name the
+current fragment:
+
+```bash
+bedder intersect -a a.bed -b b.bed -g reference.fa.fai \
+  --filter 'fragment.a is not None and len(fragment.b) >= 2'
+```
+
+### Map callbacks
+
+Use only when `bedder map --help` succeeds:
+
+- A Python operation (`-O 'py:name'`) receives `values`, a numeric list for one A.
+- A Python column extractor (`-c 'py:name'`) receives one overlapping B `Position`.
+- A numeric extractor may return `None` to skip a missing value for value-based
+  operations. Verify how `count` treats missing values in the installed release.
+- For VCF/BCF B input, use a Python extractor rather than a numeric BED selector.
+
+```python
+def bedder_sum_plus_one(values) -> float:
+    return float(sum(values) + 1)
+
+
+def bedder_vcf_dp(iv) -> float:
+    value = iv.vcf().info("DP")
+    return None if value is None else float(value)
+```
+
+## Validate and debug
+
+1. Run `python3 -m py_compile callbacks.py`.
+2. Run the exact Bedder command on representative fixtures.
+3. Check exit status, stderr, row/column counts, coordinates, missing values, and
+   reporting pieces.
+4. Retry index-related problems with `--dont-use-indexes`; enable `RUST_LOG=info`.
+
+For failures, first recheck live help, callback naming and annotations, the selected
+BED/VCF accessor, contig names and sorting, and the reporting-piece semantics. A
+Python `encodings` startup error usually means the Bedder build requires a different
+Python minor version or `PYTHONPATH`; follow the matching release's installation
+notes.

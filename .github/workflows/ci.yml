@@ -32,6 +32,10 @@ jobs:
             mkdocs-material-
 
       - run: pip install mkdocs-material mike
+      - name: Generate and verify agent skill
+        run: |
+          python scripts/generate_skill.py
+          git diff --exit-code -- bedder-skill/SKILL.md
       - name: Fetch gh-pages branch
         run: git fetch origin gh-pages --depth=1
       - name: Deploy documentation
@@ -47,10 +51,14 @@ jobs:
             mike delete latest $VERSION || true
             mike deploy --update-aliases $VERSION latest
             mike set-default latest
+            DEPLOYED_VERSION=$VERSION
           else
             echo "Deploying to dev"
             mike delete dev || true # allows force-pushing
             mike deploy --update-aliases dev
+            DEPLOYED_VERSION=dev
           fi
+          # Confirm the skill is published as the original Markdown file.
+          git show "gh-pages:${DEPLOYED_VERSION}/bedder-skill/SKILL.md" | cmp bedder-skill/SKILL.md -
           # Single push at the end to avoid conflicts between multiple pushes
           git push origin gh-pages --force

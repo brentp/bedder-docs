@@ -36,7 +36,7 @@ fields.
 The callback file is loaded by Bedder's embedded interpreter. It is not a normal
 standalone program, and it should not import `bedder` at module load time.
 
-See [Use Bedder from an agent](agent-skill.md#write-an-intersection-python-callback)
+See [Use Bedder from an agent](agent-skill.md#python-callbacks)
 for the complete callback object model, VCF examples, map callback contracts,
 validation workflow, and common failure modes.
 
