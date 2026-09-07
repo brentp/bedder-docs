@@ -69,4 +69,5 @@ nav:
   - Installation: installation.md
   - Python API: python-api.md
   - Embedding: embedding.md
+  - Agent guide: agent-skill.md
   #- Examples: example.md
