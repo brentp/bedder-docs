@@ -68,4 +68,5 @@ nav:
       - map: subcommands/map.md
   - Installation: installation.md
   - Python API: python-api.md
+  - Embedding: embedding.md
   #- Examples: example.md
