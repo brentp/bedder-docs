@@ -1,5 +1,9 @@
 # Bedder - simple, flexible intersections
 
+<p>
+  <a class="md-button md-button--primary" href="bedder-skill/SKILL.md">View raw agent SKILL.md</a>
+</p>
+
 `bedder` is organized into subcommands for easier usage:
 
 ```
