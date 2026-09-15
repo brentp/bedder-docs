@@ -71,8 +71,10 @@ nav:
       - map: subcommands/map.md
   - Installation: installation.md
   - Python API: python-api.md
+  - Examples:
+      - Repeat run effects: examples/repeat-run-effects.md
+      - Highest-identity segmental duplication: examples/segdup-identity.md
   - Embedding: embedding.md
   - Agent skill:
       - Download raw SKILL.md: skill.md
       - Usage guide: agent-skill.md
-  #- Examples: example.md

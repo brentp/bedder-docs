@@ -55,6 +55,11 @@ All subcommands share common options:
 - `-n, --n-closest <N_CLOSEST>` - report the n-closest intervals
 - `-d, --max-distance <MAX_DISTANCE>` - maximum distance to search for closest intervals
 
+## Python examples
+
+- [SNV effects on uninterrupted repeats](examples/repeat-run-effects.md)
+- [Highest-identity segmental duplication](examples/segdup-identity.md)
+
 ## Logging
 
 `bedder` has logging for debugging and tracing. The default is to only show warnings. If interested in more granular (verbose) output, set an environment variable:
