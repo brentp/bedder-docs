@@ -41,27 +41,52 @@ The prepared BED6 adds `fracMatch=<value>`, partner chromosome/start/end, and
 UCSC UID. The text label preserves identity precision through the current BED
 extra-field formatter. `other_fields()` includes the strand and these extras.
 
-## Run it
+## Prepare the SD track
 
-From a `bedder-rs` checkout on the `manuscript` branch:
+From a `bedder-rs` checkout on the `manuscript` branch, with your existing HG002
+VCF and `hg38.fai`, download the table and check its pinned checksum:
 
 ```bash
 example=manuscript/segdup-identity
-bedder intersect -a "$example/data/variants.vcf" \
-  -b "$example/data/segdups.bed" -g "$example/data/genome.tsv" \
+curl -fL --retry 3 https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/genomicSuperDups.txt.gz \
+  -o genomicSuperDups.txt.gz
+sha256sum -c "$example/genomicSuperDups.sha256"
+```
+
+One shell pipeline extracts the required columns, keeps primary chromosomes on
+both sides, and sorts the intervals. It uses Bash, gzip, awk, and BEDtools:
+
+```bash
+set -euo pipefail
+gzip -dc genomicSuperDups.txt.gz |
+  awk 'BEGIN {OFS="\t"; primary="^chr([1-9]|1[0-9]|2[0-2]|X|Y)$"}
+       $2 ~ primary && $8 ~ primary {
+         print $2,$3,$4,"sd_"$12"_"NR,0,$7,"fracMatch="$27,$8,$9,$10,$12
+       }' |
+  bedtools sort -g hg38.fai > segdups.bed
+```
+
+## Annotate the existing VCF
+
+```bash
+example=manuscript/segdup-identity
+vcf=HG002_GRCh38_MosaicSNVv1.0_GermlineV4.2.1.vcf.gz
+bedder intersect -a "$vcf" -b segdups.bed -g hg38.fai \
   --a-piece whole-wide --b-piece whole-wide -r 0 -R 0 \
   --python "$example/segdup_best_match.py" \
   -c py:sd_best -c py:sd_best_interchrom -o segdup-identity.vcf
 ```
 
+Set `vcf` to any existing compatible VCF; no variant subsetting or reference
+sequence is needed. The command annotates every input record.
 `whole-wide` supplies all overlaps together, producing one record per query;
 both zero overlap requirements retain no-hit queries with `.` annotations.
-Ties resolve by row ID. The bundled inputs exclude non-primary partner contigs.
+Ties resolve by row ID.
 
 For **chr19:9722714 G>A**, the best SD has identity **0.911287** and a chr19
 partner; restricting to interchromosomal SDs selects a chr5 partner at
-**0.910397**. This restriction changes the best record for 99 of 6,205 variants
-in the frozen example.
+**0.910397**. The separately available frozen chr19 example validates 6,205
+filtered variants; it can be run offline without any preparation.
 
 Identity describes the entire SD alignment, not just the overlap with the
 variant. Returned intervals use zero-based, half-open coordinates. BEDtools can
