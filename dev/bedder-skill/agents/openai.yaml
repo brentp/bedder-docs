@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bedder"
+  short_description: "Intersect genomic intervals with Bedder"
+  default_prompt: "Use $bedder-skill to run Bedder or write a Bedder Python callback for this interval task."
