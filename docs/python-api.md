@@ -9,6 +9,17 @@ intervals. Pass a callback file with `--python` and select a function with
 To use `bedder` as a Rust library, run Python inside a Rust application, or expose
 your project as a Python module, see [Embedding](embedding.md).
 
+The Python API uses [PyO3](https://pyo3.rs/) to embed a Python interpreter in
+Bedder. Callbacks can import installed Python packages when those packages are
+on the embedded interpreter's `sys.path`. This depends on the Python environment
+Bedder finds at runtime; activating a virtual environment alone may not expose
+its packages to a Bedder binary outside that environment. If an import fails,
+add the environment's `site-packages` directory to `PYTHONPATH`. Use `uv` to
+create an environment with the same Python major and minor version as the
+Bedder binary (for example, `uv venv --python 3.13` for a Python 3.13 build).
+A newer Python minor version is not a substitute for the version the binary
+was built against. See [Installation](installation.md).
+
 ```python
 def bedder_n_overlapping(fragment) -> int:
     """Number of reported B intervals."""
