@@ -42,3 +42,12 @@ validation workflow, and common failure modes.
 
 The generated Rust/Python API documentation is also available at
 [quinlan-lab.github.io/bedder-rs](https://quinlan-lab.github.io/bedder-rs/).
+
+## Why Python?
+
+Python is familiar to many users, so it is easy to write callbacks without
+learning a new language. Its readable syntax also makes custom calculations
+and filters easier to understand and review. When isolation is needed, Bedder
+and its Python callbacks can run inside a Docker or smolvm sandbox. VMs such as
+smolvm are becoming more common as people increasingly run AI agents and need
+to isolate their work.
