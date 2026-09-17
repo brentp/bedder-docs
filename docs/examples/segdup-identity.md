@@ -1,11 +1,18 @@
 # Highest-identity segmental duplication
 
-Sometimes an intersection should return the best match, not every overlap. Segmental duplications (SDs) are a classic case as a feature rarely overlaps just one SD.
+Sometimes an intersection should return the best match, not every overlap.
+Segmental duplications (SDs) are a classic case as a feature rarely overlaps
+just one SD.
 
-This example shows how to select the highest identity duplication overlapping a variant to assist with e.g. stratifying variant call quality by SD identity. We use the UCSC `genomicSuperDups` table, which is a curated set of SDs with a `fracMatch` field describing the fraction of aligned bases that match, and variants from HG002.
+This example shows how to select the highest identity duplication overlapping
+a variant to assist with e.g. stratifying variant call quality by SD identity.
+We use the UCSC `genomicSuperDups` table, which is a curated set of SDs with a
+`fracMatch` field describing the fraction of aligned bases that match, and
+variants from HG002.
 
 Here, **A** contains variants and **B** contains SD alignments.
-Python selects the matching record and returns its partner coordinates, with an option to consider only interchromosomal duplications.
+Python selects the matching record and returns its partner coordinates, with
+an option to consider only interchromosomal duplications.
 
 ## Python functions
 
